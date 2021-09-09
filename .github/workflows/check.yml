@@ -1,0 +1,17 @@
+name: remember-brave-people
+on:
+  pull_request_target:
+    branches:
+      - master
+jobs:
+  remember-brave-people:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 0
+      - name: Verify 1
+        run: bash -e -x ./verify.sh
+      - name: Verify 2
+        run: bash -e -x ./verify-forkpoint.sh
